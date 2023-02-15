@@ -20,9 +20,9 @@ class SearchAlgoliaClient
     {
         if (self::$instance == null) {
             if (!self::$app_id || !self::$app_secret) {
-                throw new \Exception('Algolia app_id and app_secret are not set');
+                throw new \Exception('PHP constant ALGOLIA_APP_ID and ALGOLIA_APP_PUBLIC are not set in wp-config.php file');
             }
-            self::$instance = \Algolia\AlgoliaSearch\SearchClient::create(ALGOLIA_APP_ID, ALGOLIA_APP_SECRET);
+            self::$instance = \Algolia\AlgoliaSearch\SearchClient::create(self::$app_id, self::$app_secret);
         }
 
         return self::$instance;
