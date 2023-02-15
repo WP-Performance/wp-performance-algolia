@@ -37,7 +37,8 @@ function getPostTypes()
  */
 function getMetaKeys()
 {
-    return ['seo_description', 'seo_title'];
+    // exemple for seo press
+    return ['_seopress_titles_title', '_seopress_titles_desc'];
 }
 
 /**
@@ -48,6 +49,21 @@ function wp_perf_algolia_index_name($defaultName = 'content')
 {
     return WP_ENV . '_' . $defaultName;
 }
+
+add_action(
+    'wp_footer',
+    function () {
+        do_action(
+            'qm/debug',
+            (ALGOLIA_APP_ID)
+        );
+        echo '<script type="text/javascript">'
+            . 'var ALGOLIA_APP_ID = "' . ALGOLIA_APP_ID . '";'
+            . 'var ALGOLIA_APP_PUBLIC = "' . ALGOLIA_APP_PUBLIC . '";'
+            . 'var ALGOLIA_APP_INDEX = "' . namespace\wp_perf_algolia_index_name() . '";'
+            . '</script>';
+    }
+);
 
 
 // init keys for algolia
@@ -80,7 +96,7 @@ function wp_perf_post_to_record(\WP_Post $post)
         'content' => html_entity_decode(strip_tags($post->post_content)),
         'tags' => $tags,
         'categories' => $cat,
-        'url' => get_post_permalink($post->ID),
+        'url' => get_permalink($post->ID),
         'custom_field' => get_post_meta($post->id, $post->custom_type),
     ];
 }
