@@ -1,0 +1,12 @@
+{
+    "name": "wp-performance/algolia",
+    "authors": [
+        {
+            "name": "ipatate",
+            "email": "faramazpat@gmail.com"
+        }
+    ],
+    "require": {
+        "algolia/algoliasearch-client-php": "^3.3"
+    }
+}
