@@ -29,6 +29,13 @@ The vars ```ALGOLIA_APP_ID```,  ```ALGOLIA_APP_PUBLIC``` and ```ALGOLIA_APP_INDE
 
 Example of use :
 
+```html
+<div id="searchbox"></div>
+<div id="hits"></div>
+<div id="tags-list"></div>
+```
+
+
 ```js
 import algoliasearch from 'algoliasearch/lite'
 import instantsearch from 'instantsearch.js'
@@ -82,3 +89,7 @@ hits({
 search.start()
 
 ```
+
+## Doc
+
+- [https://www.algolia.com/doc/integration/wordpress/search/building-search-ui/?client=php](https://www.algolia.com/doc/integration/wordpress/search/building-search-ui/?client=php)
